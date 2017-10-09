@@ -1,0 +1,260 @@
+body {
+	font-family: sans-serif;
+	width: 960px;
+	margin: auto;
+}
+/*------------------------------Страница Проекты-------------------------------*/
+/*------Хедер-------*/
+.navigation {
+	margin: 10px 0;
+	height: 45px;
+	border: 3px solid black;
+}
+.navigation__ul {
+	display: block;
+	height: inherit;
+	margin: auto;
+}
+.navigation__ul__item {
+	float: left;
+	display: block;
+	height: inherit;
+	padding: 0 10px 0 10px;
+}
+.clearfix:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.navigation__ul__item__link {
+	display: table-cell;
+	vertical-align: middle;
+	text-decoration: none;
+	color: black;
+	height: inherit;
+}
+.navigation__ul__item__link:hover {
+	background-color: #22c8f8;
+}
+.navigation__ul__item__link_active {
+	display: table-cell;
+	vertical-align: middle;
+	text-decoration: none;
+	color: black;
+	height: inherit;
+	background-color: #22c8f8;
+}
+/*-------Основное содержимое-----*/
+.container-projects {
+	width: 600px;
+	margin: auto;
+}
+.container-projects__header {
+	float: left;
+	margin: 20px 20px 20px 0;
+}
+/*--------Таблица--------*/
+.projects-table {
+	width: inherit;
+    margin: auto;
+    border: 3px solid black;
+    border-collapse: collapse;
+}
+.projects-table__row {
+	border-bottom: 3px solid black;
+}
+.projects-table__project-name {
+	width: 200px;
+    padding: 12px;
+}
+.projects-table__project-key {
+	width: 270px;
+	padding: 12px;
+}
+.projects-table__project-tasks {
+	width: 130px;
+	padding: 12px;
+}
+.projects-table__project-tasks-link {
+	width: 130px;
+    background: url(arrow.png);
+    background-size: 100px 38px;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: inherit;
+}
+.projects-table__project-tasks-link__link {
+	text-decoration: none;
+	color: black;
+	height: inherit;
+	margin-left: 30px;
+}
+/*-----Кнопка------*/
+.btn {
+	margin-top: 10px;
+	margin-left: 30px;
+	border-radius: 5px;
+	border: 3px solid black;
+	cursor: pointer;
+}
+/*--------Всплывашка(проекты)--------*/
+.wrap-window {
+		display: none;
+		opacity: 0.8;
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		padding: 16px;
+		background-color: rgba(1, 1, 1, 0.725);
+		z-index: 100;
+		overflow: auto;
+	}
+	
+.popup {
+		width: 400px;
+		height: 250px;
+		margin: 50px auto;
+		display: none;
+		background: #fff;
+		z-index: 200;
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		padding: 25px;
+		border-radius: 10px;
+		border: 2px solid black;
+}
+.popup__header {
+	display: inline-block;
+	margin: 0;
+	height: 50px;
+}
+.popup__close-button_close {
+	float: right;
+	cursor: pointer;
+}
+.popup__content__label-text {
+	display: block;
+	padding: 5px 0;
+}
+.popup__content__input-window {
+	display: block;
+	width: 100%;
+	border: 2px solid black;
+	height: 2em;
+	margin-top: 5px;
+}
+.popup-window {
+	margin-left: 0;
+}
+/*-----------------------------------------Страница Задачи-----------------------------------------*/
+/*-------Основное содержимое-----*/
+.container-tasks {
+	width: 700px;
+	margin: auto;
+}
+.container-tasks__header {
+	float: left;
+	display: block;
+}
+.container-tasks__text {
+	float: left;
+	display: block;
+	height: inherit;
+	padding: 10px 10px 0 10px;
+}
+/*--------Таблица--------*/
+.tasks-table {
+	width: inherit;
+    margin: auto;
+    border: 3px solid black;
+    border-collapse: collapse;
+}
+.tasks-table__row {
+	border-bottom: 3px solid black;
+}
+.tasks-table__task-move {
+    padding: 1px;
+    width: 30px;
+}
+.tasks-table__task-move__button {
+	padding: 2px;
+	width: 50%;
+	margin: auto;
+	height: 30%;
+	cursor: pointer;
+}
+.tasks-table__task-id {
+	padding: 1px;
+    width: 50px;
+}
+.tasks-table__task-status {
+    padding: 10px;
+    text-align: center;
+    width: 70px;
+}
+.tasks-table__task-status_new {
+    background-color: #91e4fb;
+    border-radius: 5px;
+}
+.tasks-table__task-status_working {
+    background-color: #fd8351;
+    border-radius: 5px;
+}
+.tasks-table__task-name {
+    padding: 10px;
+    font-size: 1.1em;
+    width: 100px;
+}
+.tasks-table__task-description {
+    padding: 10px;
+    font-size: 0.9em;
+    width: 250px;
+}
+.tasks-table__task-details {
+    background: url(arrow.png);
+    background-size: 100px 38px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100px;
+}
+.tasks-table__task-details__link {
+	text-decoration: none;
+	color: black;
+	height: 100%;
+	margin-left: 13px;
+}
+/*--------Всплывашка(задачи)--------*/
+.tasks-popup {
+		width: 400px;
+		height: 400px;
+		margin: 50px auto;
+		display: none;
+		background: #fff;
+		z-index: 200;
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		padding: 25px;
+		border-radius: 10px;
+		border: 2px solid black;
+}
+.popup__content__select-window {
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 30px;
+}
+.wide-input-window {
+	height: 100px;
+}
+
+
+
+
+
