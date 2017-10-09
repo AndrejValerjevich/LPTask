@@ -2,7 +2,7 @@
 
 require_once 'connection.php';
 
-$sql = "SELECT * FROM projects";
+$sql = "SELECT * FROM projects ORDER BY project_name ASC";
 $statement = $pdo->prepare($sql);
 $statement->execute();
 
@@ -28,8 +28,8 @@ $statement->execute();
 	<table class="projects-table">
         <?php foreach ($statement as $value) {?>
 		<tr class="projects-table__row">
-			<td class="projects-table__project-name"><a href="/"><?= $value['project_name']?></a></td>
-			<td class="projects-table__project-key">PRG</td>
+			<td class="projects-table__project-name"><a href="tasks.php?project_id=<?= $value['id']; ?>"><?=  $value['project_name']; ?></a></td>
+			<td class="projects-table__project-key"><?= $value['project_key']; ?></td>
 			<td class="projects-table__project-tasks-link"><a class="projects-table__project-tasks-link__link" href="/">Задачи</a></td>
 		</tr>
         <?php } ?>

@@ -2,9 +2,26 @@
 
 require_once 'connection.php';
 
+
 $sql = "SELECT * FROM tasks";
 $statement = $pdo->prepare($sql);
 $statement->execute();
+
+if (isset($_GET['project_id'])) {
+    $project_id = $_GET['project_id'];
+    $project_name = 'Проект '.$project_id;
+    $project_href = "?project_id=$project_id";/*Работа со ссылкой на проекты в заголовке*/
+
+    $sql = "SELECT * FROM tasks WHERE project_id='$project_id'";
+    $statement = $pdo->prepare($sql);
+    $statement->execute();/*Показываем только список задач, принадлежащих выбранному проекту*/
+} else {
+    $project_name = 'Все проекты';
+    $project_href = 'index.php';
+}
+
+
+
 
 ?>
 
@@ -25,7 +42,7 @@ $statement->execute();
 </header>
 <section class="container-tasks">
     <h1 class="container-tasks__header">Задачи</h1>
-    <p class="container-tasks__text" ">в проекте <a href="/">проект1</a></p>
+    <p class="container-tasks__text" ">в проекте <a href="<?= $project_href; ?>"><?= $project_name; ?></a></p>
 	<table class="tasks-table">
         <?php foreach ($statement as $value) {
             if ($value['status'] == 0) {
