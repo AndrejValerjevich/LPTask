@@ -214,6 +214,7 @@ body {
     padding: 10px;
     font-size: 0.9em;
     width: 250px;
+	overflow: hidden;
 }
 .tasks-table__task-details {
     background: url(arrow.png);

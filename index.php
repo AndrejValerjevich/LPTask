@@ -1,30 +1,38 @@
+<?php
+
+require_once 'connection.php';
+
+$sql = "SELECT * FROM projects";
+$statement = $pdo->prepare($sql);
+$statement->execute();
+
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-	<title></title>
-	<link rel="stylesheet"  href="style.css">
+	<title>LPTask</title>
+	<link rel="stylesheet"  href="style/style.css">
+    <link rel="shortcut icon" href="src/image/task.ico" type="image/x-icon">
 </head>
 <body>
 <header class="navigation clearfix">
 	<ul class="navigation__ul">
 		<li class="navigation__ul__item"><a class="navigation__ul__item__link_active" href="">Проекты</a></li>
-		<li class="navigation__ul__item"><a class="navigation__ul__item__link" href="tasks.html">Задачи</a></li>
+		<li class="navigation__ul__item"><a class="navigation__ul__item__link" href="tasks.php">Задачи</a></li>
 	</ul>
 </header>
 <section class="container-projects">
     <h1 class="container-projects__header">Проекты</h1>
 	<table class="projects-table">
+        <?php foreach ($statement as $value) {?>
 		<tr class="projects-table__row">
-			<td class="projects-table__project-name"><a href="/">Проект 1</a></td>
+			<td class="projects-table__project-name"><a href="/"><?= $value['project_name']?></a></td>
 			<td class="projects-table__project-key">PRG</td>
 			<td class="projects-table__project-tasks-link"><a class="projects-table__project-tasks-link__link" href="/">Задачи</a></td>
 		</tr>
-		<tr class="projects-table__row">
-			<td class="projects-table__project-name"><a href="/">Проект 2</a></td>
-			<td class="projects-table__project-key">TST</td>
-			<td class="projects-table__project-tasks-link"><a class="projects-table__project-tasks-link__link" href="/">Задачи</a></td>
-		</tr>
+        <?php } ?>
 	</table>
 	<input type="button" value="+ добавить" class="btn" onclick="show('block')">
 	<p>Сегодняшняя дата:
