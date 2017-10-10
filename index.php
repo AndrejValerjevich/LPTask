@@ -1,6 +1,6 @@
 <?php
 
-require_once 'connection.php';
+require_once 'script/php/connection.php';
 
 $sql = "SELECT * FROM projects ORDER BY project_name ASC";
 $statement = $pdo->prepare($sql);
@@ -15,6 +15,19 @@ $statement->execute();
 	<title>LPTask</title>
 	<link rel="stylesheet"  href="style/style.css">
     <link rel="shortcut icon" href="src/image/task.ico" type="image/x-icon">
+    <script type="text/javascript" src="script/js/jquery-3.2.1.js"></script>
+    <script type="text/javascript">
+        function adddata() {
+            $.ajax({
+                type: 'POST',
+                url: "script/php/addProject.php",
+                async: true,
+                data: { name: $('#name').val(), key: $('#key').val()  },
+                success: function(data){
+                    alert( "Данные: " + data + "в базе:)");
+                }
+            })}
+    </script>
 </head>
 <body>
 <header class="navigation clearfix">
@@ -35,6 +48,7 @@ $statement->execute();
         <?php } ?>
 	</table>
 	<input type="button" value="+ добавить" class="btn" onclick="show('block')">
+
 	<p>Сегодняшняя дата:
 
        <?php
@@ -46,31 +60,20 @@ $statement->execute();
 
 <div onclick="show('none')" class="wrap-window"></div>
 
-<form>
+
 	<div class="popup">
 	<h3 class="popup__header">Новый проект</h3>
 	<img class="popup__close-button_close" onclick="show('none')" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Saint_Andrew's_cross_black.svg" width="15" height="15">
 	<div class="popup__content">
 		<label class="popup__content__label-text">Название</label>
-	    <input class="popup__content__input-window" type="text" name="name">
+	    <input class="popup__content__input-window" id="name" type="text" name="name">
 		<label class="popup__content__label-text">Ключ</label>
-	    <input class="popup__content__input-window" type="text" name="key">
+	    <input class="popup__content__input-window" id="key" type="text" name="key">
+        <input type="submit" value="Создать" class="btn popup-window" onclick="adddata();">
 	</div>
-	<input type="button" value="Создать" class="btn popup-window">
+
 </div>
-</form>
-					
-<script type="text/javascript">
 
-					//Функция показа
-			function show(state){
-                    for (var i = 0; i < 1; i++) {
-                    document.getElementsByClassName('popup')[i].style.display = state;			
-					document.getElementsByClassName('wrap-window')[i].style.display = state; 	
-                    }		
-			}
-			
-		</script>
-
+<script src="script/js/popup.js"></script>
 </body>
 </html>

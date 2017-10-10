@@ -1,6 +1,6 @@
 <?php
 
-require_once 'connection.php';
+require_once 'script/php/connection.php';
 
 
 $sql = "SELECT * FROM tasks";
@@ -90,6 +90,6 @@ if (isset($_GET['project_id'])) {
 		<input type="button" value="Создать" class="btn popup-window">
 </div>
 </form>
-<script src="script/popup.js"></script>
+<script src="script/js/popup.js"></script>
 </body>
 </html>
