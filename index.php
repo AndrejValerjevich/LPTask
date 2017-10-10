@@ -1,13 +1,3 @@
-<?php
-
-require_once 'script/php/connection.php';
-
-$sql = "SELECT * FROM projects ORDER BY project_name ASC";
-$statement = $pdo->prepare($sql);
-$statement->execute();
-
-?>
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -24,9 +14,46 @@ $statement->execute();
                 async: true,
                 data: { name: $('#name').val(), key: $('#key').val()  },
                 success: function(data){
-                    alert( "Данные: " + data + "в базе:)");
+                    $('#resp').html(data);
                 }
-            })}
+            });
+            show('none');
+        }
+    </script>
+    <script type="text/javascript">
+        function loadDB(){
+            $.ajax({
+                url: "script/php/select.php",
+                dataType: 'json',
+                success: function(data){
+                    var rowid = 0;
+                    for (var n in data) {
+                        var rowdiv = document.createElement('div');
+                        rowid = "row" + n;
+                        rowdiv.className = "projects-table__row";
+                        rowdiv.id = rowid;
+
+                        table.appendChild(rowdiv);
+
+                        var cell1 = document.createElement('div');
+                        cell1.className = "projects-table__project-name";
+                        cell1.innerHTML = data[n].project_name;
+
+                        var cell2 = document.createElement('div');
+                        cell2.className = "projects-table__project-key";
+                        cell2.innerHTML = data[n].project_key;
+
+                        var cell3 = document.createElement('div');
+                        cell3.className = "projects-table__project-tasks-link";
+                        cell3.innerHTML = "Задачи";
+
+                        rowid.appendChild(cell1);
+                        rowid.appendChild(cell2);
+                        rowid.appendChild(cell3);
+                    }
+                }
+            });
+        }
     </script>
 </head>
 <body>
@@ -38,25 +65,18 @@ $statement->execute();
 </header>
 <section class="container-projects">
     <h1 class="container-projects__header">Проекты</h1>
-	<table class="projects-table">
-        <?php foreach ($statement as $value) {?>
-		<tr class="projects-table__row">
-			<td class="projects-table__project-name"><a href="tasks.php?project_id=<?= $value['id']; ?>"><?=  $value['project_name']; ?></a></td>
-			<td class="projects-table__project-key"><?= $value['project_key']; ?></td>
-			<td class="projects-table__project-tasks-link"><a class="projects-table__project-tasks-link__link" href="/">Задачи</a></td>
-		</tr>
-        <?php } ?>
-	</table>
+	<div class="projects-table" id="table">
+
+	</div>
 	<input type="button" value="+ добавить" class="btn" onclick="show('block')">
 
-	<p>Сегодняшняя дата:
+    <div id="resp">
 
-       <?php
+    </div>
 
-       echo date("Y-m-d H:i");
-
-?> 
 </section>
+
+<input type="button" value="Загрузить БД" class="btn" onclick="loadDB();">
 
 <div onclick="show('none')" class="wrap-window"></div>
 
@@ -69,7 +89,7 @@ $statement->execute();
 	    <input class="popup__content__input-window" id="name" type="text" name="name">
 		<label class="popup__content__label-text">Ключ</label>
 	    <input class="popup__content__input-window" id="key" type="text" name="key">
-        <input type="submit" value="Создать" class="btn popup-window" onclick="adddata();">
+        <input type="button" value="Создать" class="btn popup-window" onclick="adddata();">
 	</div>
 
 </div>

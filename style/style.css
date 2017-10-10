@@ -59,9 +59,11 @@ body {
     margin: auto;
     border: 3px solid black;
     border-collapse: collapse;
+	display: table;
 }
 .projects-table__row {
 	border-bottom: 3px solid black;
+	display: table-row;
 }
 .projects-table__project-hidden-id {
 	display: none;
@@ -85,6 +87,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     height: inherit;
+	display: table-cell;
 }
 .projects-table__project-tasks-link__link {
 	text-decoration: none;
