@@ -36,7 +36,7 @@ if (isset($_GET['project_id'])) {
 <body>
 <header class="navigation clearfix">
 	<ul class="navigation__ul">
-		<li class="navigation__ul__item"><a class="navigation__ul__item__link" href="index.php">Проекты</a></li>
+		<li class="navigation__ul__item"><a class="navigation__ul__item__link" href="index.html">Проекты</a></li>
 		<li class="navigation__ul__item"><a class="navigation__ul__item__link_active" href="">Задачи</a></li>
 	</ul>
 </header>

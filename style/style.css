@@ -71,10 +71,12 @@ body {
 .projects-table__project-name {
 	width: 200px;
     padding: 12px;
+	display: table-cell;
 }
 .projects-table__project-key {
 	width: 270px;
 	padding: 12px;
+	display: table-cell;
 }
 .projects-table__project-tasks {
 	width: 130px;
