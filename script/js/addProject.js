@@ -4,9 +4,12 @@ function addProject() {
         type: 'POST',
         url: "script/php/addProject.php",
         async: true,
-        data: { name: $('#name').val(), key: $('#key').val()  },
+        data: {
+            name: $('#name').val(),
+            key: $('#key').val(),
+        },
         success: function(data){
-            loadDB();
+            loadProjects();
         }
     });
     show('none');

@@ -2,7 +2,13 @@
 
 require_once 'connection.php';
 
-$sql = "SELECT * FROM projects ORDER BY project_name ASC";
+if ($_POST['page'] == 'projects') {
+    $sql = "SELECT * FROM projects ORDER BY project_name ASC";
+} elseif ($_POST['page'] == 'tasks') {
+    $sql = "SELECT * FROM tasks ORDER BY id ASC";
+}
+
+
 $statement = $pdo->prepare($sql);
 $statement->execute();
 

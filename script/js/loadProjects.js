@@ -1,7 +1,9 @@
-//Функция обновления данных на странице
-function loadDB(){
+//Функция обновления данных на странице index.html
+function loadProjects(){
     $.ajax({
+        type: 'post',
         url: "script/php/select.php",
+        data: {page: "projects"},
         dataType: 'json',
         success: function(data){
             var rowid = " ";//Динамически изменяемый id каждой строки в таблице
@@ -36,6 +38,8 @@ function loadDB(){
                 row.appendChild(cell2);
                 row.appendChild(cell3);
             }//Отрисовка HTML и заполнение ячеек
+
+            $('#resp').html(count(data[0]));
         }
     });
 }
