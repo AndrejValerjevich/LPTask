@@ -18,16 +18,9 @@ if (!empty($_POST['project_id'])) {
 
 #region //Добавление записи
 if (!empty($_POST['project_id'])&&!empty($_POST['status'])&&!empty($_POST['type'])&&!empty($_POST['name'])&&!empty($_POST['text'])) {
-    $project_id = (string)$_POST['project_id'];
-    $status = (string)$_POST['status'];
-    if ($status == "New"){
-        $status = 0;
-    }elseif ($status == "Working"){
-        $status = 1;
-    } else {
-        $status = 2;
-    }
-    $type = (string)$_POST['type'];
+    $project_id = $_POST['project_id'];
+    $status = $_POST['status'];
+    $type = $_POST['type'];
     $name = (string)$_POST['name'];
     $text = (string)$_POST['text'];
 

@@ -2,47 +2,49 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
-	<title>LPTask</title>
-	<link rel="stylesheet"  href="style/style.css">
+    <title>LPTask</title>
+    <link rel="stylesheet" href="style/style.css">
     <link rel="shortcut icon" href="src/image/task.ico" type="image/x-icon">
     <script type="text/javascript" src="script/js/jquery-3.2.1.js"></script>
     <script type="text/javascript" src="script/js/loadProjects.js"></script>
     <script type="text/javascript" src="script/js/addProject.js"></script>
     <script type="text/javascript">
-        $(document).ready (loadProjects());
+        $(document).ready(loadProjects());
     </script>
 </head>
 <body>
 <header class="navigation clearfix">
-	<ul class="navigation__ul">
-		<li class="navigation__ul__item"><a class="navigation__ul__item__link_active" href="">Проекты</a></li>
-		<li class="navigation__ul__item"><a class="navigation__ul__item__link" href="tasks.html">Задачи</a></li>
-	</ul>
+    <ul class="navigation__ul">
+        <li class="navigation__ul__item"><a class="navigation__ul__item__link_active" href="">Проекты</a></li>
+        <li class="navigation__ul__item"><a class="navigation__ul__item__link" href="tasks.html">Задачи</a></li>
+    </ul>
 </header>
 <section class="container-projects">
     <h1 class="container-projects__header">Проекты</h1>
-	<div class="projects-table" id="table">
+    <div class="projects-table" id="table">
 
     </div>
 
-	<input type="button" value="+ добавить" class="btn" onclick="show('block')">
+    <input type="button" value="+ добавить" class="btn" onclick="show('popup','block')">
 
 </section>
 
 <div onclick="show('none')" class="wrap-window"></div>
 
 
-	<div class="popup">
-		<h3 class="popup__header">Новый проект</h3>
-		<img class="popup__close-button_close" onclick="show('none')" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Saint_Andrew's_cross_black.svg" width="15" height="15">
-		<div class="popup__content">
-			<label class="popup__content__label-text">Название</label>
-			<input class="popup__content__input-window" id="name" type="text" name="name">
-			<label class="popup__content__label-text">Ключ</label>
-			<input class="popup__content__input-window" id="key" type="text" name="key">
-			<input type="button" value="Создать" class="btn popup-window" onclick="addProject();">
-		</div>
-	</div>
+<div class="popup">
+    <h3 class="popup__header">Новый проект</h3>
+    <img class="popup__close-button_close" onclick="show('popup','none')"
+         src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Saint_Andrew's_cross_black.svg" width="15"
+         height="15">
+    <div class="popup__content">
+        <label class="popup__content__label-text">Название</label>
+        <input class="popup__content__input-window" id="name" type="text" name="name">
+        <label class="popup__content__label-text">Ключ</label>
+        <input class="popup__content__input-window" id="key" type="text" name="key">
+        <input type="button" value="Создать" class="btn popup-window" onclick="addProject();">
+    </div>
+</div>
 
 <script src="script/js/popup.js"></script>
 </body>

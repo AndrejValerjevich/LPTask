@@ -6,15 +6,14 @@ function addTask() {
         async: true,
         data: {
             project_id: $("#project").val(),
-            status: $("#status").val(),
+            status: $("#statuss").val(),
             type: $("#type").val(),
             name: $("#name").val(),
             text: $("#text").val()
         },
         success: function(data){
             loadTasks();
-            $("#resp").html(data);
         }
     });
-    show('none');
+    show('addPopup', 'none');
 }

@@ -12,5 +12,5 @@ function addProject() {
             loadProjects();
         }
     });
-    show('none');
+    show('popup', 'none');
 }

@@ -212,10 +212,17 @@ body {
 .tasks-table__task-status_new {
     background-color: #91e4fb;
     border-radius: 5px;
+	line-height: 1.5em;
 }
 .tasks-table__task-status_working {
     background-color: #fd8351;
     border-radius: 5px;
+	line-height: 1.5em;
+}
+.tasks-table__task-status_done {
+	background-color: #67e5dd;
+	border-radius: 5px;
+	line-height: 1.5em;
 }
 .tasks-table__task-name {
     padding: 10px;
@@ -239,14 +246,15 @@ body {
 }
 .tasks-table__task-details__link {
 	text-decoration: none;
-	color: black;
+	color: #636b6f;
 	height: 100%;
 	margin-left: 13px;
+	cursor: pointer;
 }
 /*--------Всплывашка(задачи)--------*/
 .tasks-popup {
 		width: 400px;
-		height: 400px;
+	    height: 450px;
 		margin: 50px auto;
 		display: none;
 		background: #fff;
