@@ -62,7 +62,7 @@ function loadTasks(project_id, project_name){
 
 
                 var cell2 = document.createElement('div');
-                cell2.className = "tasks-table__task-genid  ";
+                cell2.className = "tasks-table__task-genid";
                 cell2.innerHTML = data[n].GenId;
 
 
@@ -103,7 +103,7 @@ function loadTasks(project_id, project_name){
                 editLink.innerHTML = "подробнее...";
                 editLink.className = "tasks-table__task-details__link";
                 $(editLink).bind('click', function(){
-                    show('editPopup','block');
+                    show('editPopup','block', data[n].TaskId);
                 });
 
                 var row = document.getElementById(rowid);

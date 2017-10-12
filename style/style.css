@@ -187,6 +187,9 @@ body {
 	border-bottom: 3px solid black;
 	display: table-row;
 }
+.tasks-table__task-id {
+	display: none;
+}
 .tasks-table__task-move {
     padding: 1px;
     width: 30px;
