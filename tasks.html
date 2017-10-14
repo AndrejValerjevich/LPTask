@@ -10,6 +10,8 @@
     <script type="text/javascript" src="script/js/addTask.js"></script>
     <script type="text/javascript" src="script/js/preLoad.js"></script>
     <script type="text/javascript" src="script/js/editDataLoad.js"></script>
+    <script type="text/javascript" src="script/js/editTask.js"></script>
+    <script type="text/javascript" src="script/js/cleanForm.js"></script>
     <script type="text/javascript">
         $(document).ready(preLoad());
     </script>
@@ -42,7 +44,7 @@
          height="15">
     <label class="popup__content__label-text">Название</label>
     <input class="popup__content__input-window" type="text" name="name" id="name">
-    <label class="popup__content__label-text">Проект</label>
+    <label class="popup__content__label-text" id="projectLabel">Проект</label>
     <select class="popup__content__select-window" id="project">
 
     </select>
@@ -61,6 +63,9 @@
 
 <div class="editPopup tasks-popup">
     <h3 class="popup__header">Редактировать</h3>
+    <input type="text" class="projects-table__project-hidden-id " id="taskId">
+
+    </input>
     <img class="popup__close-button_close" onclick="show('editPopup', 'none')"
          src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Saint_Andrew's_cross_black.svg" width="15"
          height="15">
@@ -80,7 +85,7 @@
     </select>
     <label class="popup__content__label-text">Описание</label>
     <input class="popup__content__input-window wide-input-window" type="text" name="text" id="editText">
-    <input type="button" value="Создать" class="btn popup-window" onclick="addTask();">
+    <input type="button" value="Сохранить" class="btn popup-window" onclick="editTask();">
 </div>
 
 <script src="script/js/popup.js"></script>

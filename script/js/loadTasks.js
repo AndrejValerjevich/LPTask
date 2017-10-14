@@ -8,8 +8,12 @@ function loadTasks(project_id, project_name){
         success: function(data){
             if (typeof (header) != "undefined") {
                 $(header).remove();
-            } if (typeof (headerText) != "undefined") {
+            }
+            if (typeof (headerText) != "undefined") {
                 $(headerText).remove();
+            }
+            if (typeof (projectId) != "undefined") {
+                $(projectId).remove();
             }
 
             var h1 = document.createElement('h1');
@@ -27,6 +31,13 @@ function loadTasks(project_id, project_name){
                 p.innerHTML = 'в проекте: <a href="">' + project_name + '</a>';
                 p.id = "headerText";
                 container.insertBefore(p,table);
+
+                var hiddenId = document.createElement('input');
+                hiddenId.id = "projectId";
+                hiddenId.type = "text";
+                hiddenId.value = project_id;
+                container.insertBefore(hiddenId, table);
+                $('#projectId').css("display","none");
             }
 
             var rowid = " ";//Динамически изменяемый id каждой строки в таблице
@@ -100,11 +111,17 @@ function loadTasks(project_id, project_name){
                 cell6.id = editId;
 
                 var editLink = document.createElement('a');
+                var taskId = data[n].TaskId;
                 editLink.innerHTML = "подробнее...";
                 editLink.className = "tasks-table__task-details__link";
-                $(editLink).bind('click', function(){
-                    show('editPopup','block', data[n].TaskId);
-                });
+                helper(editLink, taskId);
+
+                function helper (editLink, taskId) {
+                    $(editLink).bind('click', function(){
+                        show('editPopup','block', taskId);
+                    });
+                }//Замыкание...
+
 
                 var row = document.getElementById(rowid);
                 row.appendChild(cell1);
