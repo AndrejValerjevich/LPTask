@@ -41,6 +41,7 @@ function loadProjects(){
                 cell3.id = linkid;
 
                 var tasksLink = document.createElement('a');
+                tasksLink.className = "projects-table__project-tasks-link__link";
                 tasksLink.innerHTML = "Задачи";
                 tasksLink.href = "tasks.html?project_id=" + data[n].id + "&project_name=" + data[n].project_name;
 

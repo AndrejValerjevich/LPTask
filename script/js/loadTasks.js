@@ -44,7 +44,8 @@ function loadTasks(project_id, project_name){
             }
 //#endregion
 
-            var rowid = " ";//Динамически изменяемые
+            var rowid = " ";//Динамически
+            var ellipsId = " ";//изменяемые
             var statusDivId = " ";//id элементов
             var moveId = " ";//отрисовывемых
             var editId = " ";//на странице
@@ -105,8 +106,15 @@ function loadTasks(project_id, project_name){
                 cell4.innerHTML = data[n].Name;
 
                 var cell5 = document.createElement('div');
+                ellipsId = "ellips" + n;
                 cell5.className = "tasks-table__task-text";
-                cell5.innerHTML = data[n].Text;
+                cell5.id = ellipsId;
+
+
+                var cell5ellips = document.createElement('div');
+                cell5ellips.className = "tasks-table__task-text__ellips";
+                cell5ellips.innerHTML = data[n].Text;
+
 
                 var cell6 = document.createElement('div');
                 editId = "edit" + n;
@@ -142,6 +150,9 @@ function loadTasks(project_id, project_name){
 
                 var edit = document.getElementById(editId);
                 edit.appendChild(editLink);
+
+                var ellips = document.getElementById(ellipsId);
+                ellips.appendChild(cell5ellips);
             }//Отрисовка HTML и заполнение ячеек
         }
     });

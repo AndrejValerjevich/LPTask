@@ -86,7 +86,7 @@ body {
 }
 .projects-table__project-tasks-link {
 	width: 130px;
-    background: url(arrow.png);
+    background: url(../src/image/arrow.png);
     background-size: 100px 38px;
     background-position: center;
     background-repeat: no-repeat;
@@ -98,6 +98,9 @@ body {
 	color: black;
 	height: inherit;
 	margin-left: 30px;
+}
+.projects-table__project-tasks-link__link:hover {
+	color: #22c8f8;
 }
 /*-----Кнопка------*/
 .btn {
@@ -119,7 +122,6 @@ body {
 		padding: 16px;
 		background-color: rgba(1, 1, 1, 0.725);
 		z-index: 100;
-		overflow: auto;
 	}
 	
 .popup {
@@ -239,8 +241,14 @@ body {
     width: 230px;
 	display: table-cell;
 }
+.tasks-table__task-text__ellips {
+	width: 230px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 .tasks-table__task-details {
-    background: url(arrow.png);
+	background: url(../src/image/arrow.png);
     background-size: 100px 38px;
     background-position: center;
     background-repeat: no-repeat;
@@ -249,10 +257,13 @@ body {
 }
 .tasks-table__task-details__link {
 	text-decoration: none;
-	color: #636b6f;
 	height: 100%;
-	margin-left: 13px;
+	margin-left: 5px;
 	cursor: pointer;
+	font-size: 0.9em;
+}
+.tasks-table__task-details__link:hover {
+	color: #22c8f8;
 }
 /*--------Всплывашка(задачи)--------*/
 .tasks-popup {
