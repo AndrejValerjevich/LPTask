@@ -181,13 +181,12 @@ body {
 .tasks-table {
 	width: inherit;
     margin: auto;
-    border: 3px solid black;
     border-collapse: collapse;
 	display: table;
 }
 .tasks-table__row {
-	border-bottom: 3px solid black;
 	display: table-row;
+	border: 3px solid black;
 }
 
 .tasks-table__task-move {

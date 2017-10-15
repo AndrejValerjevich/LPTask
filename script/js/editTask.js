@@ -23,7 +23,7 @@ function editTask() {
             preLoad();
         }
     });
-    cleanTasksForm('editTask');
-    cleanTasksForm('addTask');
+    cleanTasksForm('editTask');//Очистка данных с форм
+    cleanTasksForm('addTask');//добавления и изменения задачи
     show('editPopup', 'none');
 }

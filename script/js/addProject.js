@@ -6,7 +6,7 @@ function addProject() {
         async: true,
         data: {
             name: $('#name').val(),
-            key: $('#key').val(),
+            key: $('#key').val()
         },
         success: function(data){
             loadProjects();

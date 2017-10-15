@@ -2,7 +2,7 @@
 
 require_once 'connection.php';
 
-#region //Добавление записи
+
 if (!empty($_POST['name'])&&!empty($_POST['key'])) {
     $name = (string)$_POST['name'];
     $key = (string)$_POST['key'];
@@ -12,7 +12,7 @@ if (!empty($_POST['name'])&&!empty($_POST['key'])) {
     echo "Все удалось!";
 } else {
     echo "Данные не пришли.";
-}
-#endregion
+}//Добавление записи в таблицу projects
+
 
 ?>

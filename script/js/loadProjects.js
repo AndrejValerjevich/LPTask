@@ -6,14 +6,11 @@ function loadProjects(){
         data: {table: "projects"},
         dataType: 'json',
         success: function(data){
-            var rowid = " ";//Динамически изменяемый id каждой строки в таблице
-            var nameid = " ";
-            var linkid = " ";
-            var rowamount = document.getElementsByClassName('projects-table__row').length;
-            for (var i = 0; i < rowamount; i++) {
-                rowid = "#row" + i;
-                $(rowid).remove();
-            }//Удаление имеющихся элементов в таблице, если они есть - чтобы избежать дублирования таблицы
+            var rowid = " ";//Динамически изменяемые id
+            var nameid = " ";//элементов, отрисовывемых
+            var linkid = " ";//на странице
+
+            $('#table').empty();//Удаление имеющихся элементов в таблице #table, чтобы избежать дублирования таблицы
 
             for (var n in data) {
                 var rowdiv = document.createElement('div');
@@ -22,7 +19,6 @@ function loadProjects(){
                 rowdiv.id = rowid;
 
                 table.appendChild(rowdiv);
-
 
                 var cell1 = document.createElement('div');
                 nameid = "name" +n;
@@ -60,7 +56,6 @@ function loadProjects(){
                 var link = document.getElementById(linkid);
                 link.appendChild(tasksLink);
             }//Отрисовка HTML и заполнение ячеек
-
         }
     });
 }

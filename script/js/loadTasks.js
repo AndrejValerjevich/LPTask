@@ -6,20 +6,23 @@ function loadTasks(project_id, project_name){
         data: {table: "tasks", project_id: project_id},
         dataType: 'json',
         success: function(data){
-            if (typeof (header) != "undefined") {
+//#region Очистка заголовков перед таблицей во измежание их дублирования
+            if (typeof (header) !== "undefined") {
                 $(header).remove();
             }
-            if (typeof (headerText) != "undefined") {
+            if (typeof (headerText) !== "undefined") {
                 $(headerText).remove();
             }
-            if (typeof (projectId) != "undefined") {
+            if (typeof (projectId) !== "undefined") {
                 $(projectId).remove();
             }
+//#endregion
 
+//#region Отрисовка заголовка перед таблицей tasks в зависимости от того, какие параметры выбраны
             var h1 = document.createElement('h1');
             h1.className = "container-tasks__header";
             h1.id = "header";
-            if (typeof (project_id) == "undefined" && typeof (project_name) == "undefined") {
+            if (typeof (project_id) === "undefined" && typeof (project_name) === "undefined") {
                 h1.innerHTML = "Все задачи";
                 container.insertBefore(h1,table);
             } else {
@@ -39,20 +42,16 @@ function loadTasks(project_id, project_name){
                 container.insertBefore(hiddenId, table);
                 $('#projectId').css("display","none");
             }
+//#endregion
 
-            var rowid = " ";//Динамически изменяемый id каждой строки в таблице
-            var statusDivId = " ";
-            var moveId = " ";
-            var editId = " ";
+            var rowid = " ";//Динамически изменяемые
+            var statusDivId = " ";//id элементов
+            var moveId = " ";//отрисовывемых
+            var editId = " ";//на странице
 
-            if (typeof (row0) != "undefined") {
-                var rowamount = document.getElementsByClassName('tasks-table__row').length;
-                for (var i = 0; i < rowamount; i++) {
-                    rowid = "#row" + i;
-                    $(rowid).remove();
-                }//Удаление имеющихся элементов в таблице, если они есть - чтобы избежать дублирования таблицы
-            }
+            var tasksTable = $('#table');
 
+            tasksTable.empty();//Удаление имеющихся элементов в таблице #table, чтобы избежать дублирования таблицы
 
             for (var n in data) {
                 var rowdiv = document.createElement('div');
@@ -61,6 +60,10 @@ function loadTasks(project_id, project_name){
                 rowdiv.id = rowid;
 
                 table.appendChild(rowdiv);
+                tasksTable.sortable({
+                    containment: 'parent',
+                    axis: 'y'
+                });//Функция для реализации перетаскивания задач в таблице
 
                 var cell1 = document.createElement('div');
                 moveId = "move" + n;
@@ -85,13 +88,13 @@ function loadTasks(project_id, project_name){
                 var cell3div = document.createElement('div');
 
                 var taskStatus = data[n].Status;
-                if(taskStatus == "Новая"){
+                if(taskStatus === "Новая"){
                     cell3div.className = "tasks-table__task-status_new";
                     cell3div.innerHTML = taskStatus;
-                } else if(taskStatus == "В работе") {
+                } else if(taskStatus === "В работе") {
                     cell3div.className = "tasks-table__task-status_working";
                     cell3div.innerHTML = taskStatus;
-                } else if(taskStatus == "Выполнена") {
+                } else if(taskStatus === "Выполнена") {
                     cell3div.className = "tasks-table__task-status_done";
                     cell3div.innerHTML = taskStatus;
                 }
@@ -120,7 +123,7 @@ function loadTasks(project_id, project_name){
                     $(editLink).bind('click', function(){
                         show('editPopup','block', taskId);
                     });
-                }//Замыкание...
+                }//Функция добавления атрибута onclick к каждой из кнопок "подробнее..."
 
 
                 var row = document.getElementById(rowid);
@@ -154,10 +157,9 @@ function loadTasks(project_id, project_name){
                 projectName.value = data[n].id;
 
                 project.appendChild(projectName);
-
             }
         }
-    });
+    });//Функция заполнения поля <select> Project опциями из таблицы projects
     $.ajax({
         type: 'post',
         url: "script/php/select.php",
@@ -173,7 +175,7 @@ function loadTasks(project_id, project_name){
 
             }
         }
-    });
+    });//Функция заполнения поля <select> Statuss опциями из таблицы statuses
     $.ajax({
         type: 'post',
         url: "script/php/select.php",
@@ -189,5 +191,5 @@ function loadTasks(project_id, project_name){
 
             }
         }
-    });
+    });//Функция заполнения поля <select> Type опциями из таблицы types
 }

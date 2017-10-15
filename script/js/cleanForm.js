@@ -1,6 +1,6 @@
-//Функция очистки элементов формы добавления и изменения задачи
+//Функция очистки элементов форм добавления и изменения задачи во измежание дублирования данных
 function cleanTasksForm(formType) {
-    if (formType == "editTask") {
+    if (formType === "editTask") {
         var taskId = $("#taskId");
         var projectId = $('#editProject');
         var status = $("#editStatuss");
@@ -8,7 +8,7 @@ function cleanTasksForm(formType) {
         var name = $("#editName");
         var text = $("#editText");
         taskId.empty();
-    } else if (formType == "addTask") {
+    } else if (formType === "addTask") {
         projectId = $('#project');
         status = $("#statuss");
         type = $("#type");

@@ -1,3 +1,4 @@
+//Функция отрисовки и заполнения формы для изменения записи в таблице tasks
 function editDataLoad(taskId) {
     $.ajax({
         type: 'post',
@@ -11,10 +12,9 @@ function editDataLoad(taskId) {
                 projectName.value = data[n].id;
 
                 editProject.appendChild(projectName);
-
             }
         }
-    });
+    });//Функция заполнения поля <select> editProject опциями из таблицы projects
     $.ajax({
         type: 'post',
         url: "script/php/select.php",
@@ -30,7 +30,7 @@ function editDataLoad(taskId) {
 
             }
         }
-    });
+    });//Функция заполнения поля <select> editStatuss опциями из таблицы statuses
     $.ajax({
         type: 'post',
         url: "script/php/select.php",
@@ -46,7 +46,7 @@ function editDataLoad(taskId) {
 
             }
         }
-    });
+    });//Функция заполнения поля <select> editType опциями из таблицы types
     $.ajax({
         type: 'post',
         url: "script/php/select.php",
@@ -56,12 +56,12 @@ function editDataLoad(taskId) {
             for (var n in data) {
                 $('#taskId').val(data[n].TaskId);
                 $('#editName').val(data[n].Name);
-                $('#editProject').find('option[value=' + data[n].ProjectId + ']').prop("selected", true);
-                $('#editStatuss').find('option[value=' + data[n].StatusId + ']').prop("selected", true);
-                $('#editType').find('option[value=' + data[n].TypeId + ']').prop("selected", true);
+                $('#editProject').find('option[value=' + data[n].ProjectId + ']').prop("selected", true);//Установка значения
+                $('#editStatuss').find('option[value=' + data[n].StatusId + ']').prop("selected", true);//selected опциям
+                $('#editType').find('option[value=' + data[n].TypeId + ']').prop("selected", true);//выбранного задания
                 $('#editText').val(data[n].Text);
             }
         }
-    });
+    });//Функция заполнения всех полей формы данными выбранной задачи
 }
 

@@ -1,7 +1,7 @@
 //Функция добавления нового задания
 function addTask() {
     var query = window.location.href.split("?")[1];
-    if (typeof (query) != "undefined") {
+    if (typeof (query) !== "undefined") {
         var projectId = $('#projectId');
     } else {
         projectId = $('#project');

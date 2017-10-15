@@ -1,22 +1,11 @@
 <?php
 
 require_once 'connection.php';
+require_once 'generateId.php';
 
-$gen_id = "";
-if (!empty($_POST['project_id'])) {
-    $project_id = (string)$_POST['project_id'];
-    $sql = "SELECT * FROM projects WHERE id=?";
-    $statement = $pdo->prepare($sql);
-    $statement->execute(["{$project_id}"]);
-
-    foreach ($statement as $value) {
-        $gen_id = $value['project_key']."-".$value['id'];
-    }
-}
+$gen_id = generateId($_POST['project_id'], $pdo);//Генерация идентификатора gen_id, состоящего из key проекта и его id
 
 
-
-#region //Добавление записи
 if (!empty($_POST['project_id'])&&!empty($_POST['status'])&&!empty($_POST['type'])&&!empty($_POST['name'])&&!empty($_POST['text'])) {
     $project_id = $_POST['project_id'];
     $status = $_POST['status'];
@@ -30,7 +19,7 @@ if (!empty($_POST['project_id'])&&!empty($_POST['status'])&&!empty($_POST['type'
     echo "Все удалось!";
 } else {
     echo "Данные не пришли.";
-}
-#endregion
+}//Добавление записи в таблицу tasks
+
 
 ?>
